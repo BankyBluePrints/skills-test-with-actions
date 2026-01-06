@@ -1,6 +1,8 @@
 # System Modules
+
 import sys
 import os
+import math
 
 # Installed Modules
 import pytest
@@ -68,6 +70,36 @@ def test_get_nth_fibonacci_ten():
 
     # Assert
     assert result == 55
+
+    def test_area_of_circle_large_radius():
+        """Test with a large radius."""
+        radius = 1000
+        result = area_of_circle(radius)
+        assert abs(result - (math.pi * 1000 ** 2)) < 1e-5
+
+    def test_area_of_circle_float_radius():
+        """Test with a float radius."""
+        radius = 2.5
+        result = area_of_circle(radius)
+        assert abs(result - (math.pi * 2.5 ** 2)) < 1e-5
+
+    def test_get_nth_fibonacci_two():
+        """Test with n=2."""
+        n = 2
+        result = get_nth_fibonacci(n)
+        assert result == 1
+
+    def test_get_nth_fibonacci_five():
+        """Test with n=5."""
+        n = 5
+        result = get_nth_fibonacci(n)
+        assert result == 5
+
+    def test_get_nth_fibonacci_twenty():
+        """Test with n=20."""
+        n = 20
+        result = get_nth_fibonacci(n)
+        assert result == 6765
 
     def test_area_of_circle_negative_radius():
         """Test with a negative radius to raise ValueError."""
