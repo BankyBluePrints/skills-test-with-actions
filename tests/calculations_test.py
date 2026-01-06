@@ -101,6 +101,28 @@ def test_get_nth_fibonacci_ten():
         result = get_nth_fibonacci(n)
         assert result == 6765
 
+        # Additional coverage tests (alternate import style)
+        import pytest
+        from src.calculations import area_of_circle as area_of_circle_alt, get_nth_fibonacci as get_nth_fibonacci_alt
+
+        def test_area_of_circle_negative():
+            with pytest.raises(ValueError):
+                area_of_circle_alt(-5)
+
+        def test_get_nth_fibonacci_negative():
+            with pytest.raises(ValueError):
+                get_nth_fibonacci_alt(-1)
+
+        def test_area_of_circle_valid():
+            assert area_of_circle_alt(1) == math.pi
+
+        def test_get_nth_fibonacci_zero_one():
+            assert get_nth_fibonacci_alt(0) == 0
+            assert get_nth_fibonacci_alt(1) == 1
+
+        def test_get_nth_fibonacci_general():
+            assert get_nth_fibonacci_alt(5) == 5  # F(5)=5
+
     def test_area_of_circle_negative_radius():
         """Test with a negative radius to raise ValueError."""
         radius = -1
